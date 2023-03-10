@@ -12,7 +12,7 @@ import SwiftUI
 class CrossUIApp: App
 {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    var the_view_: CrossUIView!
+    var the_view_: ContentView!
 
     @Environment(\.scenePhase) var scenePhase
     var body: some Scene
@@ -20,6 +20,16 @@ class CrossUIApp: App
         WindowGroup
         {
             the_view_.ignoresSafeArea()
+        }
+    }
+}
+
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Hello, World!")
+            Text("I'm great!")
         }
     }
 }
