@@ -5,3 +5,4 @@ ios-ipa-helloworld-cmake
 - https://github.com/stevencurtis/SwiftCoding/tree/master/SwiftUI/HelloWorld
 - https://github.com/virtualmatador/cross
 - https://blog.csdn.net/weixin_40085372/article/details/123868285
+- https://github.com/pytorch/pytorch/blob/master/scripts/xcode_build.rb
