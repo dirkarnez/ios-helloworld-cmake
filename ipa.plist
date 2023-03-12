@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 <!-- 	<key>generateAppStoreInformation</key>
-	<true/>
+	<true/>-->
 	<key>method</key>
-	<string>app-store</string> -->
+	<string>app-store</string> 
 </dict>
 </plist>
