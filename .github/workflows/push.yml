@@ -32,7 +32,7 @@ jobs:
           mkdir -p ipa/Payload && \
           cp -r ./Release-iphoneos/ios-ipa-helloworld-cmake.app  ./ipa/Payload && \
           cd ipa && \
-          zip -r ../ios-ipa-helloworld-cmake.ipa *
+          zip -r ../${{ env.targetIPA }} *
           
 #      - uses: fastai/workflows/ssh@master
 #        with:
