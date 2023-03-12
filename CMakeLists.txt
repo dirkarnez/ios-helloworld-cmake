@@ -19,7 +19,8 @@ set(CMAKE_OSX_ARCHITECTURES "arm64")
 set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer")
 
 add_executable(${CMAKE_PROJECT_NAME}
-    src/Main.swift
+    "src/Main.swift"
+    "src/ContentView.swift"
 )
 
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
