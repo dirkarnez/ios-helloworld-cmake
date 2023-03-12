@@ -29,10 +29,6 @@ set_source_files_properties("${CMAKE_CURRENT_BINARY_DIR}/Assets.xcassets" PROPER
     GENERATED true
     MACOSX_PACKAGE_LOCATION Resources
 )
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../../html")
-set_source_files_properties("${CMAKE_CURRENT_SOURCE_DIR}/../../html" PROPERTIES
-    MACOSX_PACKAGE_LOCATION Resources
-)
 
 target_link_libraries(${CMAKE_PROJECT_NAME}
     "-framework UIKit"
