@@ -8,9 +8,7 @@ set(CMAKE_SYSTEM_VERSION 15)
 set(CMAKE_MACOSX_BUNDLE ON)
 
 add_executable(${CMAKE_PROJECT_NAME}
-    src/CrossUIApp.swift
-    src/CrossUIView.swift
-    src/WebView.swift
+    src/Main.swift
 )
 
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
