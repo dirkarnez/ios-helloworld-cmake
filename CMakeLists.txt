@@ -68,11 +68,11 @@ foreach(resolution ${resolutions})
         BYPRODUCTS "${icon_path}/${icon_name}"
     )
 endforeach(resolution in resolutions)
-
+    
 add_custom_command(TARGET ${CMAKE_PROJECT_NAME} PRE_BUILD
-    COMMAND security unlock-keychain -p \$\(<~/password.txt\) login.keychain-db
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/../../html" "$<TARGET_FILE_DIR:${CMAKE_PROJECT_NAME}>/html"
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/Assets.xcassets" "${CMAKE_CURRENT_BINARY_DIR}/Assets.xcassets"
+# COMMAND security unlock-keychain -p \$\(<~/password.txt\) login.keychain-db
+# COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/../../html" "$<TARGET_FILE_DIR:${CMAKE_PROJECT_NAME}>/html"
 )
 
 add_custom_target("ipa" ALL
