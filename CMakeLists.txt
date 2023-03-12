@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.18)
 
 project(ios-helloworld-cmake LANGUAGES Swift)
 
-SET(TARGETSDK iPhoneOS.sdk)
+SET(TARGETSDK iPhoneOS15.2.sdk)
 SET(CMAKE_OSX_SYSROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/${TARGETSDK})
 set(CMAKE_Swift_LANGUAGE_VERSION 5.4)
 set(CMAKE_SYSTEM_NAME iOS)
