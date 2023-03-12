@@ -1,15 +1,7 @@
-//
-//  SwiftUIApp.swift
-//  cross
-//
-//  Created by Ali Asadpoor on 6/6/21.
-//  Copyright © 2021 shaidin. All rights reserved.
-//
-
 import SwiftUI
 
 @main
-class CrossUIApp: App
+class Main: App
 {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var the_view_: ContentView!
