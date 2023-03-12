@@ -1,0 +1,31 @@
+name: docker-compose-actions-workflow
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'c*'
+  workflow_dispatch:
+defaults:
+  run:
+    shell: bash
+    
+jobs:
+  build:
+    runs-on: macOS-12
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: maxim-lobanov/setup-xcode@v1.1
+        with:
+          xcode-version: "14.0"
+
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+        
+# - uses: actions/checkout@v2
+# - run: source script-mac.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
