@@ -7,6 +7,7 @@ ios-ipa-helloworld-cmake
 - https://github.com/virtualmatador/cross
 - https://blog.csdn.net/weixin_40085372/article/details/123868285
 - https://github.com/pytorch/pytorch/blob/master/scripts/xcode_build.rb
+- [关于自动编译iOS工程，生成app及ipa文件的方法 - 腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1619755)
 
 ### Mac
 - [runner-images/macos-11-Readme.md at main · actions/runner-images](https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md)
