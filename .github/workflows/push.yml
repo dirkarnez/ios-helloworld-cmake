@@ -10,15 +10,18 @@ defaults:
   run:
     shell: bash
     
+env:
+  DEVELOPER_DIR: /Applications/Xcode_14.1.app
+  
 jobs:
   build:
     runs-on: macOS-12
     steps:
       - uses: actions/checkout@v3
         
-#       - uses: maxim-lobanov/setup-xcode@v1.1
-#         with:
-#           xcode-version: "14.0"
+      - uses: maxim-lobanov/setup-xcode@v1.1
+        with:
+          xcode-version: "14.0"
           
       - name: Show Xcode version
         run: xcodebuild -version
