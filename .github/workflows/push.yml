@@ -10,10 +10,11 @@ defaults:
   run:
     shell: bash
     
-  
 jobs:
   build:
     runs-on: macos-11
+    env:
+      targetIPA: ios-ipa-helloworld-cmake-${{ github.ref_name }}.ipa
     steps:
       - uses: actions/checkout@v3
           
@@ -27,14 +28,25 @@ jobs:
       - name: build
         run: |
           cmake -G"Xcode" -DCMAKE_BUILD_TYPE=Debug -B./cmake-build && cd cmake-build && cmake --build . && \
-          xcodebuild -project "ios-ipa-helloworld-cmake.xcodeproj"  archive -destination 'generic/platform=iOS' -scheme "ios-ipa-helloworld-cmake" -archivePath "./ios-ipa-helloworld-cmake.xcarchive" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY= CODE_SIGN_ENTITLEMENTS= GCC_OPTIMIZATION_LEVEL=s SWIFT_OPTIMIZATION_LEVEL=-O
+          xcodebuild -project "ios-ipa-helloworld-cmake.xcodeproj"  archive -destination 'generic/platform=iOS' -scheme "ios-ipa-helloworld-cmake" -archivePath "./ios-ipa-helloworld-cmake.xcarchive" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY= CODE_SIGN_ENTITLEMENTS= GCC_OPTIMIZATION_LEVEL=s SWIFT_OPTIMIZATION_LEVEL=-O && \
+          mkdir -p ipa/Payload && \
+          cp -r ./Release-iphoneos/ios-ipa-helloworld-cmake.app  ./ipa/Payload && \
+          cd ipa && \
+          zip -r ../ios-ipa-helloworld-cmake.ipa *
           
-      - uses: fastai/workflows/ssh@master
+#      - uses: fastai/workflows/ssh@master
+#        with:
+#          ssh_key: ${{ secrets.SSH_KEY }}
+#          key_file: id_ecdsa
+#        
+#  # - uses: actions/checkout@v2
+#  # - run: source script-mac.sh
+#      - name: Setup tmate session
+#        uses: mxschmitt/action-tmate@v2
+
+      - name: Release prebuilt
+        uses: ncipollo/release-action@v1
         with:
-          ssh_key: ${{ secrets.SSH_KEY }}
-          key_file: id_ecdsa
-        
-  # - uses: actions/checkout@v2
-  # - run: source script-mac.sh
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v2
+          artifacts: "cmake-build/${{ env.targetIPA }}"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
