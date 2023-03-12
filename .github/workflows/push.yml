@@ -13,17 +13,18 @@ defaults:
   
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
       - uses: actions/checkout@v3
-      
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: '13.0.0'
           
       - name: Show Xcode version
         run: xcodebuild -version
-
+      
+      - name: build
+        run: |
+          cmake -G"Xcode" -DCMAKE_BUILD_TYPE=Debug -B./cmake-build && cd cmake-build && cmake --build . && \
+          xcodebuild -project "ios-ipa-helloworld-cmake.xcodeproj"  archive -destination 'generic/platform=iOS' -scheme "ios-ipa-helloworld-cmake" -archivePath "./ios-ipa-helloworld-cmake.xcarchive" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY= CODE_SIGN_ENTITLEMENTS= GCC_OPTIMIZATION_LEVEL=s SWIFT_OPTIMIZATION_LEVEL=-O
+          
       - uses: fastai/workflows/ssh@master
         with:
           ssh_key: ${{ secrets.SSH_KEY }}
