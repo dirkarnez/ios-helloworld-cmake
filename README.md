@@ -7,3 +7,7 @@ ios-ipa-helloworld-cmake
 - https://github.com/virtualmatador/cross
 - https://blog.csdn.net/weixin_40085372/article/details/123868285
 - https://github.com/pytorch/pytorch/blob/master/scripts/xcode_build.rb
+
+### Mac
+- [runner-images/macos-11-Readme.md at main · actions/runner-images](https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md)
+- [runner-images/macos-12-Readme.md at main · actions/runner-images](https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md)
